@@ -7,30 +7,18 @@
         <button @click="requestApi">Pesquisar</button>
       </div>
 
-      <div v-if="aviso" id="aviso">
-        CNPJ Incorreto
+      <div v-if="avisos.ativo" id="aviso">
+        {{ avisos.mensagem }}
       </div>
 
-      <div class="tabs-component">
+      <div v-if="tabs" class="tabs-component">
         <tabs cache-lifetime="10" :options="{ useUrlFragment: false, defaultTabHash: 'first-tab' }">
         <tab id="first-tab" name="Informações">
           <div v-for="info in resultado"
-          v-bind:key="info">
-            <div v-if="info.data.type == 'not_found' || info.data.type == 'bad_request'">
-              {{ info.data.message }}
-            </div>
-            <div v-else>
-              <div>
-                <span>Nome da empresa</span>
-                <br>
-                <span>{{ info.data.razao_social }}</span>
-              </div>
-
-              <div>
-                <span>CNPJ da empresa</span>
-                <br>
-                <span>{{ info.data.cnpj }}</span>
-              </div>
+          v-bind:key="info.id">
+            
+            <div>
+              {{info.cnpj}}
             </div>
           </div>
         </tab>
@@ -54,24 +42,47 @@ export default {
   name: 'Home',
   data() {
     return {
-      cnpj: "",
+      cnpj: '',
       resultado: [],
-      aviso: null
+      avisos: {
+        ativo: null,
+        mensagem: ''
+      },
+      tabs: false
     }
   },
   methods: {
-    requestApi: function() {
-      var cnpj = this.cnpj.replace(/[^\d]/g, '');
-      if(cnpj == "" || cnpj.length < 14 || cnpj.length > 14) {
-        this.aviso = true;
-      } else {
-        axios.get("http://localhost:8000/api/"+cnpj)
+    formatCnpj() {
+      const cnpj = this.cnpj.replace(/[^\d]/g, '');
+      return cnpj;
+    },
+    verifyErrors(cnpj) {
+      if(cnpj.length == "" || cnpj.length < 14 || cnpj.length > 14) {
+        this.avisos.ativo = true;
+        this.avisos.mensagem = 'CNPJ Inválido';
+        return true;
+      }
+      return false;
+    },
+    requestApi() {
+      const cnpj = this.formatCnpj(this.cnpj);
+      const error = this.verifyErrors(cnpj);
+      if(error == false) {
+        axios.get(`${process.env.VUE_APP_API_HOST}/${cnpj}`)
         .then((res)=>{
-          this.resultado.push(res);
+        const {data, statusCode} = res.data;
+        if(statusCode == 200) {
+          this.resultado.push(data);
+          this.tabs = true;
+        } else {
+           this.tabs = false;
+            this.avisos.ativo = true;
+            this.avisos.mensagem = data.message;
+          }
         });
         this.resultado.splice(0);
-        this.aviso = null;
-      }
+        this.avisos.ativo = false;
+      }  
     }
   }
 }
