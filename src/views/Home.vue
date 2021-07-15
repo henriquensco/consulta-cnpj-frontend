@@ -1,10 +1,18 @@
 <template>
   <div class="home">
     <div>
-      <h2>Pesquisar CNPJ</h2>
-      <div>
-        <input v-model="cnpj" v-mask="'##.###.###/####-##'" type="text">
-        <button @click="requestApi">Pesquisar</button>
+      <div id="left">
+        <div id="texts">
+          <h1>Olá, está procurando uma empresa?</h1>
+          <h4>Temos todoas as Informações que você precisa por apenas algumas teclas de distância.</h4>
+        </div>
+        <div id="search_cnpj">
+          <h5>Digite o CNPJ para saber mais</h5>
+          <input v-model="cnpj" v-mask="'##.###.###/####-##'" type="text">
+          <div>
+            <button @click="requestApi">Pesquisar</button>
+          </div>
+        </div>
       </div>
 
       <div v-if="avisos.ativo" id="aviso">
@@ -90,14 +98,48 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-#aviso {
-  background-color: #ff8585;
+#left {
+  margin: 5% 2%;
   width: 40%;
-  margin: 0 auto;
-  margin-top: 5%;
-  padding: 5px 5px;
-  border-color:#000;
+  float: left;
+}
+h4 {
+  margin: 9%;
+}
+#search_cnpj input{
+  background-color: rgb(22, 22, 22);
+  padding: 8px 5px;
+  width: 60%;
+  border: none;
+  border-radius: 2px;
+  color:rgb(253, 253, 253);
+  font-weight: bold;
+}
+#search_cnpj button{
+  background-color: rgb(15, 139, 31);
+  padding: 8px 5px;
+  width: 35%;
+  margin-top: 10%;
+  border: none;
   border-radius: 3px;
+  font-weight: bold;
+  color:rgb(253, 253, 253);
+  cursor: pointer;
+}
+#aviso {
+  width: 10%;
+  margin: 0 auto;
+  background-color: rgb(230, 31, 31);
+  border-color:#000;
+  padding: 7px 7px;
+  border-radius: 3px;
+  position: relative;
+  animation-name: animacao;
+  animation-duration: 0.5s;
+}
+@keyframes animacao {
+  0%  {padding: 2px 2px; opacity: 0;}
+  50%  {padding: 3px 3px; opacity: 0.5;}
+  100% {padding: 7px 7px; opacity: 1;}
 }
 </style>
