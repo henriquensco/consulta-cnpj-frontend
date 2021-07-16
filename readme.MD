@@ -28,5 +28,5 @@ docker build -t consulta-cnpj/docker-vuejs .
 ~~~~
 Executando API via Docker
 ~~~~
-docker run -it -p 8080:80 consulta-cnpj/vuejs
+docker run -it -p 8080:80 consulta-cnpj/docker-vuejs
 ~~~~
