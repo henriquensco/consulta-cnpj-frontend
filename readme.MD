@@ -9,7 +9,6 @@ Aplicação desenvolvida com VueJS para consultar dados de CNPJ fazendo requisi�
 
 ## Instalação do Projeto
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
 ``` bash
 # install dependencies

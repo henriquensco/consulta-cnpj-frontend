@@ -7,28 +7,28 @@
         <tabs cache-lifetime="10" :options="{ useUrlFragment: false, defaultTabHash: 'first-tab' }">
           
           <tab id="first-tab" name="Informações">
-            <div v-for="info in resultado"
-            v-bind:key="info.id">
+            <table v-for="info in resultado"
+            v-bind:key="info.id" border="0">
               
-              <div id="razao_social">
+              <td id="razao_social">
                 <span>Nome empresarial:</span>
                 <br>
                 {{info.razao_social}}
-              </div>
+              </td>
 
-              <div id="num_inscricao">
+              <td id="num_inscricao">
                 <span>Número da inscrição:</span>
                 <br>
                 {{info.cnpj}} - {{info.descricao_matriz_filial}}
-              </div>
+              </td>
 
-              <div id="data_abertura">
+              <tr id="data_abertura">
                 <span>Data de abertura:</span>
                 <br>
                 {{info.data_inicio_atividade}}
-              </div>
+              </tr>
 
-              <div id="endereco">
+              <tr id="endereco" >
                 <span>Logradouro: {{info.logradouro}}</span>
                 <br>
                 <span>Número: {{info.numero}}</span>    
@@ -41,25 +41,25 @@
                 <span>Municipio: {{info.municipio}}</span>
 
                 <span>UF: {{info.uf}}</span>             
-              </div>
+              </tr>
 
-              <div id="contato">
+              <tr id="contato">
                 <span>Telefone:</span>
                 <br>
                 {{info.ddd_telefone_1}}
-              </div>
+              </tr>
 
-              <div id="capital_social">
+              <tr id="capital_social">
                 <span>Capital Social:</span>
                 <br>
                 {{info.capital_social}}
-              </div>
+              </tr>
 
-            </div>
+            </table>
           </tab>
 
           <tab id="second-tab" name="Atividade Econômica">
-            <table v-for="items in resultado" :key="items.id">
+            <table v-for="items in resultado" :key="items.id" border="1">
 
               <thead>
                 <th>Código</th>
