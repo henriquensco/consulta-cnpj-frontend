@@ -95,7 +95,7 @@
       <div id="left">
         <div id="texts">
           <h1>Olá, está procurando uma empresa?</h1>
-          <h4>Temos todoas as Informações que você precisa por apenas algumas teclas de distância.</h4>
+          <h4>Temos todos as Informações que você precisa por apenas algumas teclas de distância.</h4>
         </div>
         <div id="search_cnpj">
           <h5>Digite o CNPJ para saber mais</h5>
