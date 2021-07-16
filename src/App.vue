@@ -17,7 +17,7 @@ export default {
 
 <style>
 html, body {
-  background-color: #000;
+  background-color: #121212;
   padding: 0;
   margin: 0;
 }
@@ -26,7 +26,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #ffffff;
   margin-top: 60px;
 }
 </style>
