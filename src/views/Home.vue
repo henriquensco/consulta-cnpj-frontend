@@ -187,6 +187,7 @@ export default {
   width: 40%;
   float: left;
 }
+
 h4, h3 {
   margin: 9%;
   font-style: Sora;
@@ -211,6 +212,7 @@ h4, h3 {
   color:rgb(253, 253, 253);
   cursor: pointer;
 }
+
 #search_cnpj button:active {
   background-color: #05744f;
 }
@@ -219,8 +221,9 @@ h4, h3 {
   margin: 0 auto;
   background-color: rgb(230, 31, 31);
   border-color:#000;
-  padding: 7px 17px;
+  padding: 7px 7px;
   border-radius: 3px;
+  position: relative;
   animation-name: animacao;
   animation-duration: 0.5s;
 }
