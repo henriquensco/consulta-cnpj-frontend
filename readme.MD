@@ -20,3 +20,13 @@ npm run dev
 # build for production with minification
 npm run build
 ```
+
+## Executando no aplicação no Docker
+Criando container Docker
+~~~~
+docker build -t consulta-cnpj/docker-vuejs .
+~~~~
+Executando API via Docker
+~~~~
+docker run -it -p 8080:80 consulta-cnpj/vuejs
+~~~~
