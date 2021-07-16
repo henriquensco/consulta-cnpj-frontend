@@ -28,7 +28,7 @@
                 {{info.data_inicio_atividade}}
               </tr>
 
-              <tr id="endereco" colspan="1">
+              <tr id="endereco" >
                 <span>Logradouro: {{info.logradouro}}</span>
                 <br>
                 <span>Número: {{info.numero}}</span>    
